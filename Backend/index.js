@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const { connection } = require("./db")
+const { authRouter } = require("./Routes/user.router")
 const app = express()
 
 app.use(express.json())
@@ -10,6 +11,7 @@ app.use(cors())
 app.get("/",(req,res)=>{
     res.send("HomePage!")
 })
+app.use("/user",authRouter)
 
 app.listen(8080,async()=>{
     try {
