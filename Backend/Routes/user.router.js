@@ -31,7 +31,7 @@ authRouter.post("/login",async(req,res)=>{
         if(user){
             bcrypt.compare(password,user.password,(err,result)=>{
                 if(result){
-                    let token = jwt.sign({dealer_ID:user._id , dealer:user.name},"cars",{
+                    let token = jwt.sign({dealerId:user._id , dealer:user.name},"cars",{
                         expiresIn:"7d"
                     })
                     res.status(200).send({msg:"Logged In" , token:token})
