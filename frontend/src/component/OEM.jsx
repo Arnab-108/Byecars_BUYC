@@ -1,4 +1,4 @@
-import { Box, FormControl, Grid, GridItem, Input } from '@chakra-ui/react'
+import { Box, Button, FormControl, Grid, GridItem, Input } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import OEMCard from './OEMCard'
@@ -7,7 +7,7 @@ import OEMCard from './OEMCard'
 
 export const OEM = () => {
     const [data, setData] = useState([])
-
+    const [input,setInput] = useState("")
     useEffect(() => {
         getData()
     }, [])
@@ -22,11 +22,22 @@ export const OEM = () => {
                 alert("Something went wrong!")
             })
     }
+
+    const handleClick=()=>{
+        axios.get(`http://localhost:8080/oem?q=${input}`).then((res)=>{
+            console.log(res)
+            setData(res.data)
+        }).catch((err)=>{
+            alert("SOmething went wrong!")
+        })
+    }
+    
     return (
         <>
             <div>
-                <FormControl mt={"5vh"} textAlign={"center"}>
-                    <Input placeholder='Search Here' size='lg' width={"50vw"} />
+                <FormControl gap={2} mt={"5vh"} textAlign={"center"}>
+                    <Input value={input} onChange={(e)=>{setInput(e.target.value)}} placeholder='Search Here' size='lg' width={"50vw"} />
+                    <Button onClick={handleClick}>Search</Button>
                 </FormControl>
                 
                 <Grid ml={"2vw"} mt={"5vh"} gap={5} gridTemplateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)", "repeat(3,1fr)", "repeat(3,1fr)"]}>
