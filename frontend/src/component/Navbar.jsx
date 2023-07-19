@@ -115,15 +115,17 @@ export const Navbar = () => {
                                                 fontSize="15px"
                                                 
                                             >
-                                                <Box
-                                                color="#333368"
-                                                borderBottom={"1px solid black"}
-                                                width={"100%"}
-                                                height={"5vh"}
-                                                _hover={{ fontWeight: "bold" }}
-                                                >
-                                                    Deals
-                                                </Box>
+                                                <Link to={"/deal"}>
+                                                    <Box
+                                                    color="#333368"
+                                                    borderBottom={"1px solid black"}
+                                                    width={"100%"}
+                                                    height={"5vh"}
+                                                    _hover={{ fontWeight: "bold" }}
+                                                    >
+                                                        Deals
+                                                    </Box>
+                                                </Link>
                                                 <Box
                                                     height={"5vh"}
                                                     color="#333368"

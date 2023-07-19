@@ -17,7 +17,7 @@ import { AiFillStar,AiOutlineHeart } from "react-icons/ai";
 
 import { BsHeartFill,BsHeart } from "react-icons/bs"
 import { NavLink } from 'react-router-dom';
-function OEMCard({ _id, company, model,max_speed,mileage ,price, color, image }) {
+function OEMCard({ _id, company, model,price, color, image }) {
     const [liked,setLiked] = useState(false)
     console.log(liked)
     return (

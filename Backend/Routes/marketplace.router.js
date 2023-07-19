@@ -23,8 +23,8 @@ marketplaceRouter.get("/",async(req,res)=>{
         sortObj.price = -1
     }
     try {
-        const data = await marketplaceModel.find(query).sort(sortObj)
-        res.status(200).send(data)
+            const data = await marketplaceModel.find(query).sort(sortObj)
+            res.status(200).send(data)
     } catch (error) {
         res.status(400).send({err:error})
     }
@@ -33,7 +33,7 @@ marketplaceRouter.get("/",async(req,res)=>{
 marketplaceRouter.get('/:id',async(req,res)=>{
     const {id}=req.params;
     try {
-        const data=await marketplaceModel.find({_id:id});
+        const data=await marketplaceModel.findOne({_id:id});
         res.send(data);
     } catch (error) {
         res.send({"msg":error.message});

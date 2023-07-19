@@ -4,6 +4,8 @@ import { OEM } from './OEM'
 import { Deals } from './Deals'
 import { MarketPlace } from './MarketPlace'
 import { SinglePage } from './SinglePage'
+import { Market } from './Market'
+import { MarketSingle } from './MarketSingle'
 
 export const AllRoutes = () => {
   return (
@@ -11,7 +13,8 @@ export const AllRoutes = () => {
         <Route path='/' element={<OEM />} />
         <Route path='/deal' element={<Deals />} />
         <Route path='/:id' element={<SinglePage />} />
-        <Route path='/market' element={<MarketPlace />} />
+        <Route path='/market' element={<Market />} />
+        <Route path='/market/:id' element={<MarketSingle />} />
     </Routes>
   )
 }
