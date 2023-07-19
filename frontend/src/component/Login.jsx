@@ -46,6 +46,12 @@ export const Login = () => {
         });
     };
 
+    const showErrorMessage = () => {
+        toast.error('Provide correct email and password!', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    };
+
     const handleLogin = () => {
         try {
             const obj = {
@@ -76,7 +82,7 @@ export const Login = () => {
                 //     isClosable: true,
                 //     position:"top"
                 //   })
-                alert(err)
+                showErrorMessage()
             })
         } catch (error) {
             console.log(error)

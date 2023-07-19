@@ -34,6 +34,17 @@ dealerRouter.get("/",async(req,res)=>{
     }
 })
 
+dealerRouter.get('/:id',async(req,res)=>{
+    const {id}=req.params;
+    try {
+        const data=await dealerModel.find({_id:id});
+        res.send(data);
+    } catch (error) {
+        res.send({"msg":error.message});
+    }
+})
+
+
 dealerRouter.post("/add",async(req,res)=>{
     try {
         const data = new dealerModel(req.body)

@@ -20,6 +20,16 @@ oemRouter.get("/",async(req,res)=>{
     }
 })
 
+oemRouter.get('/:id',async(req,res)=>{
+    const {id}=req.params;
+    try {
+        const data=await oemModel.findOne({_id:id});
+        res.send(data);
+    } catch (error) {
+        res.send({"msg":error.message});
+    }
+})
+
 oemRouter.post("/add",async(req,res)=>{
     try {
         const data = new oemModel(req.body)

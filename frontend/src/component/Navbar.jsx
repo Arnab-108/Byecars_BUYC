@@ -43,7 +43,7 @@ export const Navbar = () => {
     console.log(isAuth)
     return (
         <>
-            <Box  overflow="hidden" bg="white">
+            <Box >
                 <Box
                     cursor="pointer"
                     backgroundColor={"aliceblue"}
@@ -72,7 +72,7 @@ export const Navbar = () => {
                             </Box>
                             <Spacer />
                             <HStack pos={"relative"} right={"3vw"} gap={3} w="40%">
-                                <Link>
+                                <Link to={"/market"}>
                                     <Button
                                         variant={"ghost"}
                                         size="lg"
@@ -82,17 +82,17 @@ export const Navbar = () => {
                                         fontWeight="400"
                                     //   onClick={() => navigate("History Route")}  history route need to be added
                                     >
-                                        Track Order
+                                        MarketPlace
                                     </Button>
                                 </Link>
                                 {isAuth ? (
-                                    <Popover trigger="hover">
+                                    <Popover  trigger="hover">
                                         <PopoverTrigger>
                                             <Box
                                                 fontWeight={"600"}
                                                 fontSize="15px"
                                                 m="auto"
-                                                // mt="-2px"
+                                                mt="-2px"
                                                 w="90px"
                                                 textAlign="center"
                                             >
@@ -107,18 +107,20 @@ export const Navbar = () => {
                                         <PopoverContent
                                             w="120px"
                                             boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+                                            
                                         >
                                             <PopoverBody
                                                 h={"100%"}
                                                 pl="6"
                                                 fontSize="15px"
-                                                _hover={{ fontWeight: "bold" }}
+                                                
                                             >
                                                 <Box
                                                 color="#333368"
                                                 borderBottom={"1px solid black"}
                                                 width={"100%"}
                                                 height={"5vh"}
+                                                _hover={{ fontWeight: "bold" }}
                                                 >
                                                     Deals
                                                 </Box>
@@ -126,6 +128,7 @@ export const Navbar = () => {
                                                     height={"5vh"}
                                                     color="#333368"
                                                     pt={"1vh"}
+                                                    _hover={{ fontWeight: "bold" }}
                                                     onClick={() => {
                                                         localStorage.removeItem("auth");
                                                         localStorage.removeItem("userData");

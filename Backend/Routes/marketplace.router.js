@@ -30,6 +30,16 @@ marketplaceRouter.get("/",async(req,res)=>{
     }
 })
 
+marketplaceRouter.get('/:id',async(req,res)=>{
+    const {id}=req.params;
+    try {
+        const data=await marketplaceModel.find({_id:id});
+        res.send(data);
+    } catch (error) {
+        res.send({"msg":error.message});
+    }
+})
+
 marketplaceRouter.post("/add",async(req,res)=>{
     const {id} = req.body
     console.log(id)
