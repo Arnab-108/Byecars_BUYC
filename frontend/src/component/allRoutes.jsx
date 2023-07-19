@@ -1,7 +1,15 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { OEM } from './OEM'
+import { Deals } from './Deals'
+import { MarketPlace } from './MarketPlace'
 
-export const allRoutes = () => {
+export const AllRoutes = () => {
   return (
-    <div>allRoutes</div>
+    <Routes>
+        <Route path='/' element={<OEM />} />
+        <Route path='/deal' element={<Deals />} />
+        <Route path='/market' element={<MarketPlace />} />
+    </Routes>
   )
 }

@@ -34,7 +34,7 @@ authRouter.post("/login",async(req,res)=>{
                     let token = jwt.sign({dealerId:user._id , dealer:user.name},"cars",{
                         expiresIn:"7d"
                     })
-                    res.status(200).send({msg:"Logged In" , token:token , user:user})
+                    res.status(200).send({success:true , msg:"Logged In" , token:token , user:user})
                 }
                 else{
                     res.status(400).send({err:"Provide the correct password"})

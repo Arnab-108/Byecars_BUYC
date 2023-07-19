@@ -18,18 +18,20 @@ import {
     ModalContent,
     ModalOverlay,
     useToast,
-  } from "@chakra-ui/react";
-  import { ToastContainer, toast } from 'react-toastify';
+} from "@chakra-ui/react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Signup } from './Signup';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
-    const toast = useToast()
+    //const toast = useToast()
     const [show, setShow] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const [email , setEmail] = useState("")
-    const [password , setPassword] = useState("")
-
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
     const handleOpen = () => {
         setIsOpen(true);
     }
@@ -38,29 +40,52 @@ export const Login = () => {
         setIsOpen(false);
     }
 
-    const handleLogin=()=>{
-        const obj={
-            email,
-            password
+    const showToastMessage = () => {
+        toast.success('Login Successfull !', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    };
+
+    const handleLogin = () => {
+        try {
+            const obj = {
+                email,
+                password
+            }
+
+            axios.post("http://localhost:8080/user/login", obj).then((res) => {
+                console.log(res)
+                if (res.data.msg === "Logged In") {
+                    localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("user", JSON.stringify(res.data.user))
+                    localStorage.setItem("auth", true)
+                    showToastMessage()
+                    setTimeout(() => {
+                        navigate("/")
+                    }, 1500)
+                }
+                else{
+                    alert("error")
+                }
+            }).catch((err) => {
+                // toast({
+                //     title: 'Something went Wrong!',
+                //     description: "Please try again!",
+                //     status:"error",
+                //     duration: 3000,
+                //     isClosable: true,
+                //     position:"top"
+                //   })
+                alert(err)
+            })
+        } catch (error) {
+            console.log(error)
         }
 
-        axios.post("http://localhost:8080/user/login",obj).then((res)=>{
-            console.log(res)
-            if(res.data.msg==="Logged In"){
-                localStorage.setItem("token",res.data.token)
-                localStorage.setItem("user",JSON.stringify(res.data.user))
-                localStorage.setItem("auth", JSON.stringify(true))
-                toast({
-                    title: 'Login Successfull! ',
-                    description: "Thank you for choosing us once again!",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                    position:"top"
-                })
+    }
 
-            }
-        })
+    const handleSignin = () => {
+        handleLogin()
     }
     return (
         <>
@@ -106,7 +131,7 @@ export const Login = () => {
                                 focusBorderColor="rgb(206, 206, 223)"
                                 borderColor={"rgb(206, 206, 223)"}
                                 value={email}
-                                onChange={(e)=>{setEmail(e.target.value)}}
+                                onChange={(e) => { setEmail(e.target.value) }}
                                 rounded="2xl"
                                 mb={"5px"}
                             />
@@ -120,7 +145,7 @@ export const Login = () => {
                                     focusBorderColor="rgb(206, 206, 223)"
                                     borderColor={"rgb(206, 206, 223)"}
                                     value={password}
-                                    onChange={(e)=>setPassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     rounded="2xl"
                                 />
 
@@ -156,7 +181,7 @@ export const Login = () => {
                             </HStack>
                             <Button
                                 //isLoading={loading}
-                                onClick={handleLogin}
+                                onClick={handleSignin}
                                 bgColor={"#11daac"}
                                 width="100%"
                                 borderRadius={"35px/35px"}
