@@ -1,8 +1,6 @@
 const mongoose = require("mongoose")
 
-const dealerSchema = mongoose.Schema({
-    dealer:{type:String , required:true},
-    dealerId:{type:String , required:true},
+const marketplaceSchema = mongoose.Schema({
     company:{type:String},
     car:{type:String},
     prev_byer:{type:String},
@@ -15,11 +13,12 @@ const dealerSchema = mongoose.Schema({
     org_paint:{type:String},
     accidents:{type:Number},
     rgst_place:{type:String},
-    price:{type:Number}
+    price:{type:Number},
+    id:{type:String}
 },{
     versionKey:false
 })
 
-const dealerModel = mongoose.model("dealer",dealerSchema)
+const marketplaceModel = mongoose.model("market",marketplaceSchema)
 
-module.exports = {dealerModel}
+module.exports = {marketplaceModel}

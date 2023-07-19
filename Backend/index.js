@@ -3,6 +3,7 @@ const cors = require("cors")
 const { connection } = require("./db")
 const { authRouter } = require("./Routes/user.router")
 const { dealerRouter } = require("./Routes/dealer.router")
+const { marketplaceRouter } = require("./Routes/marketplace.router")
 const app = express()
 
 app.use(express.json())
@@ -14,6 +15,7 @@ app.get("/",(req,res)=>{
 })
 app.use("/user",authRouter)
 app.use("/deal" , dealerRouter)
+app.use("/market",marketplaceRouter)
 app.listen(8080,async()=>{
     try {
         await connection

@@ -8,8 +8,26 @@ const dealerRouter = express.Router()
 dealerRouter.use(auth)
 
 dealerRouter.get("/",async(req,res)=>{
+    const {color , meilage , price , order} = req.query
+    const query={}
+    if(color){
+        query.color = {$in:color}
+    }
+    if(price){
+        query.price = {$in:price}
+    }
+    if(meilage){
+        query.meilage = {$in:meilage}
+    }
+    let sortObj = {}
+    if(order==="asc"){
+        sortObj.price = 1
+    }
+    else if(order==="desc"){
+        sortObj.price = -1
+    }
     try {
-        const data = await dealerModel.find({dealerId:req.body.dealerId})
+        const data = await dealerModel.find({dealerId:req.body.dealerId}).find(query).sort(sortObj)
         res.status(200).send(data)
     } catch (error) {
         res.status(400).send({err:error})
