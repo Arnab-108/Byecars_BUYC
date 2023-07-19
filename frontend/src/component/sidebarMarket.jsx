@@ -118,6 +118,10 @@ export const Sidebar = () => {
                                             <input type="checkbox" value={"Red"} checked={color.includes("Red")} style={{width:"20px",height:"20px"}}  onChange={handleColor}  />
                                             <Text fontSize={"sm"} color={"gray"}>Red</Text>
                                         </HStack>
+                                        <HStack>
+                                            <input type="checkbox" value={"Grey"} checked={color.includes("Grey")} style={{width:"20px",height:"20px"}}  onChange={handleColor}  />
+                                            <Text fontSize={"sm"} color={"gray"}>Grey</Text>
+                                        </HStack>
                                     </CheckboxGroup>
 
                                 </Stack>

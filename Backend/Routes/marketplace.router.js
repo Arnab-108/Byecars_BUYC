@@ -43,19 +43,13 @@ marketplaceRouter.get('/:id',async(req,res)=>{
 marketplaceRouter.post("/add",async(req,res)=>{
     const {id} = req.body
     console.log(id)
-    const car = await marketplaceModel.findOne({id})
-    if(car){
-        res.status(400).send({msg:"This car is already added! Please add a new car"})
-    }
-    else{
         try {
             const data = new marketplaceModel(req.body)
             await data.save()
-            res.status(200).send({msg:"Added to the Marketplace!" , car:req.body})
+            res.status(200).send({success:true, msg:"Added to the Marketplace!" , car:req.body})
         } catch (error) {
             res.status(400).send({err:error})
         }
-    }
 })
 
 

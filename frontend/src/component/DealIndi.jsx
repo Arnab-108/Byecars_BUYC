@@ -30,7 +30,7 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                 borderWidth="1px"
                 rounded="lg"
                 position="relative">
-                <NavLink to={`/${_id}`} >
+                <NavLink to={`/deal/${_id}`} >
                     <Image
                         src={image}
                         alt={`Picture of ${company}`}
