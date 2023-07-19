@@ -17,19 +17,50 @@ import {
     ModalCloseButton,
     ModalContent,
     ModalOverlay,
+    useToast,
   } from "@chakra-ui/react";
   import { ToastContainer, toast } from 'react-toastify';
 import { Signup } from './Signup';
+import axios from 'axios';
 
 export const Login = () => {
+    const toast = useToast()
     const [show, setShow] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const [email , setEmail] = useState("")
+    const [password , setPassword] = useState("")
+
     const handleOpen = () => {
         setIsOpen(true);
     }
 
     const handleClose = () => {
         setIsOpen(false);
+    }
+
+    const handleLogin=()=>{
+        const obj={
+            email,
+            password
+        }
+
+        axios.post("http://localhost:8080/user/login",obj).then((res)=>{
+            console.log(res)
+            if(res.data.msg==="Logged In"){
+                localStorage.setItem("token",res.data.token)
+                localStorage.setItem("user",JSON.stringify(res.data.user))
+                localStorage.setItem("auth", JSON.stringify(true))
+                toast({
+                    title: 'Login Successfull! ',
+                    description: "Thank you for choosing us once again!",
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                    position:"top"
+                })
+
+            }
+        })
     }
     return (
         <>
@@ -53,7 +84,7 @@ export const Login = () => {
 
                     <ModalBody p={"0px 0px "} borderRadius={"15px 15px 15px 15px "}>
                         <Image
-                            src="https://static1.lenskart.com/media/desktop/img/DesignStudioIcons/DesktopLoginImage.svg"
+                            src="https://images.hindustantimes.com/auto/img/2021/12/28/600x338/Indian_cars_1640662074513_1640662081298.jpg"
                             alt="pic"
                             borderRadius={"10px 10px 0px 0px "}
                         />
@@ -74,8 +105,8 @@ export const Login = () => {
                                 fontSize="16px"
                                 focusBorderColor="rgb(206, 206, 223)"
                                 borderColor={"rgb(206, 206, 223)"}
-                                //value={email}
-                                //onChange={handleChange}
+                                value={email}
+                                onChange={(e)=>{setEmail(e.target.value)}}
                                 rounded="2xl"
                                 mb={"5px"}
                             />
@@ -88,8 +119,8 @@ export const Login = () => {
                                     fontSize="16px"
                                     focusBorderColor="rgb(206, 206, 223)"
                                     borderColor={"rgb(206, 206, 223)"}
-                                    //value={password}
-                                    //onChange={handleChange}
+                                    value={password}
+                                    onChange={(e)=>setPassword(e.target.value)}
                                     rounded="2xl"
                                 />
 
@@ -125,7 +156,7 @@ export const Login = () => {
                             </HStack>
                             <Button
                                 //isLoading={loading}
-                                //onClick={handlesign}
+                                onClick={handleLogin}
                                 bgColor={"#11daac"}
                                 width="100%"
                                 borderRadius={"35px/35px"}

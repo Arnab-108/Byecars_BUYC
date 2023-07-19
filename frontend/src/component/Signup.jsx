@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios"
+import { useToast } from '@chakra-ui/react'
 import {
     Center,
     Heading,
@@ -22,9 +24,58 @@ import {
     Link,
   } from "@chakra-ui/react";
 export const Signup = () => {
+    const toast = useToast()
     const [show, setShow] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
-  
+    const [name,setName] = useState("")
+    const [email , setEmail] = useState("")
+    const [password , setPassword] = useState("")
+    const [age,setAge] = useState("")
+
+    const handleRegister=()=>{
+        const obj={
+            name,
+            email,
+            password,
+            age
+        }
+
+        axios.post("http://localhost:8080/user/signup",obj).then((res)=>{
+            console.log(res)
+            if(res.data.msg==="A New User is Added!"){
+                toast({
+                    title: 'Registration Successfull!',
+                    description: "Please Login to access all the features. Thank You!",
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                    position:"top"
+                  })
+                  
+            }
+            else if(res.data.msg==="User already exists , Please Login !"){
+                toast({
+                    title: 'User already exists',
+                    description: "Please Login to access all the features. Thank You!",
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                    position:"top"
+                  })
+            }
+        })
+        .catch((err)=>{
+            toast({
+                title: 'Something went Wrong!',
+                description: "Please try again!",
+                status:"error",
+                duration: 3000,
+                isClosable: true,
+                position:"top"
+              })
+        })
+        console.log(obj)
+    }
     return (
         <>
             <Center onClick={onOpen} fontWeight={"400"} fontSize="15px" w="60px">
@@ -51,7 +102,7 @@ export const Signup = () => {
                             <Input
                                 type="text"
                                 fontSize="16px"
-                                //onChange={handleChange}
+                                onChange={(e)=>{setName(e.target.value)}}
                                 focusBorderColor="rgb(206, 206, 223)"
                                 name="name"
                                 placeholder="Enter Your Full Name*"
@@ -59,12 +110,12 @@ export const Signup = () => {
                                 borderColor={"rgb(206, 206, 223)"}
                                 m={"8px 0px 15px 0px"}
                                 rounded="2xl"
-                                //value={username}
+                                value={name}
                             />
 
 
                             <Input
-                                //onChange={handleChange}
+                                onChange={(e)=>setEmail(e.target.value)}
                                 fontSize="16px"
                                 name="email"
                                 placeholder="Email*"
@@ -73,13 +124,13 @@ export const Signup = () => {
                                 borderColor={"rgb(206, 206, 223)"}
                                 m={"8px 0px 18px 0px"}
                                 rounded="2xl"
-                                //value={usermail}
+                                value={email}
                             />
 
 
                             <InputGroup mb="15px">
                                 <Input
-                                    //onChange={handleChange}
+                                   onChange={(e)=>setPassword(e.target.value)}
                                     fontSize="16px"
                                     type={show ? "text" : "password"}
                                     name="password"
@@ -89,7 +140,7 @@ export const Signup = () => {
                                     borderColor={"rgb(206, 206, 223)"}
                                     m={"8px 0px 8px 0px"}
                                     rounded="2xl"
-                                    //value={userpass}
+                                    value={password}
                                 />
 
                                 <InputRightElement width="6.5rem" size="lg">
@@ -104,7 +155,18 @@ export const Signup = () => {
                                     </Button>
                                 </InputRightElement>
                             </InputGroup>
-
+                            <Input
+                                onChange={(e)=>setAge(e.target.value)}
+                                fontSize="16px"
+                                name="number"
+                                placeholder="Age"
+                                h={"45px"}
+                                focusBorderColor="rgb(206, 206, 223)"
+                                borderColor={"rgb(206, 206, 223)"}
+                                m={"8px 0px 18px 0px"}
+                                rounded="2xl"
+                                value={age}
+                            />
 
                             <HStack>
                                 <Box
@@ -153,7 +215,7 @@ export const Signup = () => {
 
                             <Button
                                 //   isLoading={loading}
-                                //onClick={handleRegister}
+                                onClick={handleRegister}
                                 bgColor={"#11daac"}
                                 width="100%"
                                 borderRadius={"35px/35px"}

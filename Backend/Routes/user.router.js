@@ -9,7 +9,7 @@ authRouter.post("/signup",async(req,res)=>{
     const {email,name,password,age} = req.body
     const user1 = await authModel.findOne({email:email})
     if(user1){
-        res.status(400).send({err:"User already exists , Please Login !"})
+        res.status(200).send({msg:"User already exists , Please Login !"})
     }
     else{
         try {
@@ -34,7 +34,7 @@ authRouter.post("/login",async(req,res)=>{
                     let token = jwt.sign({dealerId:user._id , dealer:user.name},"cars",{
                         expiresIn:"7d"
                     })
-                    res.status(200).send({msg:"Logged In" , token:token})
+                    res.status(200).send({msg:"Logged In" , token:token , user:user})
                 }
                 else{
                     res.status(400).send({err:"Provide the correct password"})
