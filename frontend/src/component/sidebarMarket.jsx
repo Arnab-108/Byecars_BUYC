@@ -34,18 +34,18 @@ export const Sidebar = () => {
     }
 
 
-    //handleBrand
+    //handlePrice
     const handlePrice=(e)=>{
         //console.log(e.target.value)
-        let newBrand = [...price]
+        let newPrice = [...price]
         const value = e.target.value
-        if(newBrand.includes(value)){
-            newBrand = newBrand.filter((el)=> el!==value)
+        if(newPrice.includes(value)){
+            newPrice = newPrice.filter((el)=> el!==value)
         }
         else{
-            newBrand.push(value)
+            newPrice.push(value)
         }
-        setPrice(newBrand)
+        setPrice(newPrice)
     }
 
 

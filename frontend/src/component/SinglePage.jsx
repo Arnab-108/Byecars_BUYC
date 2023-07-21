@@ -32,6 +32,7 @@ import {
   } from '@chakra-ui/react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+
 export const SinglePage = () => {
     const { id } = useParams()
     const [data,setData] = useState({})
@@ -40,7 +41,7 @@ export const SinglePage = () => {
     }, [])
 
     const getData=()=>{
-        axios.get(`http://localhost:8080/oem/${id}`)
+        axios.get(`https://puce-light-anemone.cyclic.app/oem/${id}`)
         .then((res) => {
             console.log(res)
             setData(res.data)

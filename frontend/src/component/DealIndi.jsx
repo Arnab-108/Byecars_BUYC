@@ -16,6 +16,7 @@ import {
 import { useState } from 'react'
 import { BsHeartFill,BsHeart } from "react-icons/bs"
 import { NavLink } from 'react-router-dom';
+
 export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,accidents,max_speed,meilage,org_paint,prev_byer,price,rgst_place,handleDelete}) => {
     const [liked,setLiked] = useState(false)
     const deleteItem = ()=>{
@@ -26,6 +27,7 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
 
             <Box
                 bg={useColorModeValue('white', 'gray.800')}
+                height={"55vh"}
                 maxW="sm"
                 borderWidth="1px"
                 rounded="lg"
@@ -65,7 +67,7 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                         </Tooltip>
                     </Flex>
 
-                    <Flex direction={"column"} align={"start"}>
+                    <Flex gap={1} direction={"column"} align={"start"}>
                         <Box fontSize="sm" color={useColorModeValue('gray.800', 'white')}>
                             <Box as="span" color={'gray.600'} fontSize="sm">
                                 model:
@@ -91,7 +93,7 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                             {color}
                         </Box> */}
                     </Flex>
-                    <HStack mt={"2vh"}>
+                    <HStack mt={"3vh"}>
                         <Button 
                             onClick={deleteItem}
                         >Delete</Button>

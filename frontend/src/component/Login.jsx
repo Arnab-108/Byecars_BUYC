@@ -59,7 +59,7 @@ export const Login = () => {
                 password
             }
 
-            axios.post("http://localhost:8080/user/login", obj).then((res) => {
+            axios.post("https://puce-light-anemone.cyclic.app/user/login", obj).then((res) => {
                 console.log(res)
                 if (res.data.msg === "Logged In") {
                     localStorage.setItem("token", res.data.token)

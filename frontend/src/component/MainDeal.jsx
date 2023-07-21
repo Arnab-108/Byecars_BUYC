@@ -8,7 +8,7 @@ import { Deals } from './Deals';
 import { Form } from './Form';
 export const MainDeal = () => {
   return (
-    <Box margin={"auto"} width={"85vw"} mt="10px">
+    <Box margin={"auto"} width={"65vw"} mt="10px">
         <Tabs isFitted>
           <TabList mb="1em">
             <Tab>

@@ -40,7 +40,7 @@ export const Signup = () => {
             age
         }
 
-        axios.post("http://localhost:8080/user/signup",obj).then((res)=>{
+        axios.post("https://puce-light-anemone.cyclic.app/user/signup",obj).then((res)=>{
             console.log(res)
             if(res.data.msg==="A New User is Added!"){
                 toast({
@@ -51,7 +51,7 @@ export const Signup = () => {
                     isClosable: true,
                     position:"top"
                   })
-                  
+
             }
             else if(res.data.msg==="User already exists , Please Login !"){
                 toast({

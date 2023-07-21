@@ -54,24 +54,6 @@ export const Form = () => {
     const [price,setPrice] = useState("")
     const [rgst_place , setRgstplace] = useState("")
 
-    useEffect(()=>{
-        getData()
-    },[])
-
-    const getData = () => {
-        axios.get("http://localhost:8080/deal",{
-            headers:{
-                Authorization:`Brerer ${token}`
-            }
-        })
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => {
-                alert("Something went wrong!")
-            })
-    }
-
     const handleSubmit=()=>{
         const obj={
             company,
@@ -88,7 +70,7 @@ export const Form = () => {
             price,
             rgst_place
         }
-        axios.post("http://localhost:8080/deal/add",obj,{
+        axios.post("https://puce-light-anemone.cyclic.app/deal/add",obj,{
             headers:{
                 Authorization:`Baerer ${token}`
             }
@@ -101,7 +83,6 @@ export const Form = () => {
                     isClosable: true,
                     position:"top"
             })
-            getData()
         }).catch(()=>{
             toast({
                 title: 'Something went wrong!',

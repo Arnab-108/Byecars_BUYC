@@ -71,7 +71,7 @@ export const Navbar = () => {
                                 </HStack>
                             </Box>
                             <Spacer />
-                            <HStack pos={"relative"} right={"3vw"} gap={3} w="40%">
+                            <HStack pos={"relative"} right={"5vw"} gap={0} w="20%">
                                 <Link to={"/market"}>
                                     <Button
                                         variant={"ghost"}
@@ -154,30 +154,6 @@ export const Navbar = () => {
                                         <Signup />
                                     </Box>
                                 )}
-
-                                <Button
-                                    leftIcon={<CiHeart />}
-                                    size="lg"
-                                    variant={"ghost"}
-                                    fontSize="16px"
-                                    _hover={{ bg: "white" }}
-                                    fontWeight="400"
-                                //   onClick={() => navigate("Wishlist Route")}
-                                >
-                                    Wishlist
-                                </Button>
-                                <Link to="/cart">     {/*  // Cart route */}
-                                    <Button
-                                        leftIcon={<CgShoppingCart />}
-                                        size="lg"
-                                        variant={"ghost"}
-                                        _hover={{ bg: "white" }}
-                                        fontSize="16px"
-                                        fontWeight="400"
-                                    >
-                                        Cart
-                                    </Button>
-                                </Link>
                             </HStack>
                         </HStack>
                     </HStack>

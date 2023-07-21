@@ -45,7 +45,7 @@ export const DealSinglePage = () => {
     }, [])
 
     const getData = () => {
-        axios.get(`http://localhost:8080/deal/${id}`, {
+        axios.get(`https://puce-light-anemone.cyclic.app/deal/${id}`, {
             headers: {
                 Authorization: `Bearers ${token}`
             }
@@ -61,7 +61,7 @@ export const DealSinglePage = () => {
 
     const handleClick=()=>{
         console.log(data)
-        axios.post("http://localhost:8080/market/add",data)
+        axios.post("https://puce-light-anemone.cyclic.app/market/add",data)
         .then((res)=>{
                 toast({
                     title: 'Car Added to the Market!',
@@ -160,12 +160,12 @@ export const DealSinglePage = () => {
                             <AccordionPanel pb={4}>
                                 <VStack align={"start"}>
                                     <Text fontSize={"13px"} color={"grey"}>Product id  <span style={{ position: "relative", left: "5vw", color: "black", textAlign: "start" }}>{data._id}</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Kilometers Ran  <span style={{ position: "relative", left: "4vw", color: "black", textAlign: "start" }}>{data.kms_ran} km</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Max Speed  <span style={{ position: "relative", left: "6vw", color: "black", textAlign: "start" }}>{data.max_speed} kmph</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Mileage per liter  <span style={{ position: "relative", left: "4vw", color: "black", textAlign: "start" }}>{data.meilage} kmpl</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Major Scratches<span style={{ position: "relative", left: "4vw", color: "black", textAlign: "start" }}>{data.major_scratches}</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Original Paint<span style={{ position: "relative", left: "5vw", color: "black", textAlign: "start" }}>{data.org_paint}</span></Text>
-                                    <Text fontSize={"13px"} color={"grey"}>Previous Byer<span style={{ position: "relative", left: "5vw", color: "black", textAlign: "start" }}>{data.prev_byer}</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Kilometers Ran  <span style={{ position: "relative", left: "50px", color: "black", textAlign: "start" }}>{data.kms_ran} km</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Max Speed  <span style={{ position: "relative", left: "75px", color: "black", textAlign: "start" }}>{data.max_speed} kmph</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Mileage per liter  <span style={{ position: "relative", left: "3vw", color: "black", textAlign: "start" }}>{data.meilage} kmpl</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Major Scratches<span style={{ position: "relative", left: "53px", color: "black", textAlign: "start" }}>{data.major_scratches}</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Original Paint<span style={{ position: "relative", left: "68px", color: "black", textAlign: "start" }}>{data.org_paint}</span></Text>
+                                    <Text fontSize={"13px"} color={"grey"}>Previous Byer<span style={{ position: "relative", left: "68px", color: "black", textAlign: "start" }}>{data.prev_byer}</span></Text>
                                     <Text fontSize={"13px"} color={"grey"}>Registration Place<span style={{ position: "relative", left: "3vw", color: "black", textAlign: "start" }}>{data.rgst_place}</span></Text>
                                 </VStack>
                             </AccordionPanel>

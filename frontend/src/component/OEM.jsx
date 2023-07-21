@@ -13,7 +13,7 @@ export const OEM = () => {
     }, [])
 
     const getData = () => {
-        axios.get("http://localhost:8080/oem")
+        axios.get("https://puce-light-anemone.cyclic.app/oem")
             .then((res) => {
                 console.log(res)
                 setData(res.data)
@@ -24,7 +24,7 @@ export const OEM = () => {
     }
 
     const handleClick=()=>{
-        axios.get(`http://localhost:8080/oem?q=${input}`).then((res)=>{
+        axios.get(`https://puce-light-anemone.cyclic.app/oem?q=${input}`).then((res)=>{
             console.log(res)
             setData(res.data)
         }).catch((err)=>{
@@ -37,7 +37,7 @@ export const OEM = () => {
             <div>
                 <FormControl gap={2} mt={"5vh"} textAlign={"center"}>
                     <Input value={input} onChange={(e)=>{setInput(e.target.value)}} placeholder='Search Here' size='lg' width={"50vw"} />
-                    <Button onClick={handleClick}>Search</Button>
+                    <Button pos={"relative"} left={"10px"} onClick={handleClick}>Search</Button>
                 </FormControl>
                 
                 <Grid ml={"2vw"} mt={"5vh"} gap={5} gridTemplateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)", "repeat(3,1fr)", "repeat(3,1fr)"]}>
