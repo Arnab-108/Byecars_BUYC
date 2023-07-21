@@ -28,7 +28,7 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
             <Box
                 bg={useColorModeValue('white', 'gray.800')}
                 height={"55vh"}
-                maxW="sm"
+                width={"100%"}
                 borderWidth="1px"
                 rounded="lg"
                 position="relative">

@@ -22,7 +22,8 @@ export const MarketIndi = ({_id,company,car,image,color,kms_ran,major_scratches,
 
                 <Box
                     bg={useColorModeValue('white', 'gray.800')}
-                    maxW="sm"
+                    height={"55vh"}
+                    width={"100%"}
                     borderWidth="1px"
                     rounded="lg"
                     position="relative">

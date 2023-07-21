@@ -44,7 +44,7 @@ export const OEM = () => {
                     {
                         data.length > 0 &&
                         data.map((el) => (
-                            <GridItem cursor={"pointer"} _hover={{ shadow: "sm" }}>
+                            <GridItem cursor={"pointer"} _hover={{ boxShadow:"0px 0px 8px #ddd" }}>
                                 <OEMCard
                                     key={el._id}
                                     {...el}

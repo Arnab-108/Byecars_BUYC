@@ -36,7 +36,7 @@ export const MarketPlace = () => {
                 {
                     products.length > 0 &&
                     products.map((el) => (
-                        <GridItem cursor={"pointer"} _hover={{ shadow: "sm" }}>
+                        <GridItem cursor={"pointer"} _hover={{ shadow: "lg" }}>
                             <MarketIndi
                                 key={el._id}
                                 {...el}

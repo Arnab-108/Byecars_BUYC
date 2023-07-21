@@ -21,11 +21,13 @@ function OEMCard({ _id, company, model,price, color, image }) {
     const [liked,setLiked] = useState(false)
     console.log(liked)
     return (
-        <Flex cursor={"pointer"} gap={10} w="full" alignItems="center" justifyContent="center">
+        <Flex cursor={"pointer"} gap={10} w="100%" alignItems="center" justifyContent="center">
            
             <Box
                 bg={useColorModeValue('white', 'gray.800')}
-                maxW="sm"
+                height={"65vh"}
+                w="100%"
+              
                 borderWidth="1px"
                 rounded="lg"
                 position="relative">
