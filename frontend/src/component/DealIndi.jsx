@@ -16,8 +16,9 @@ import {
 import { useState } from 'react'
 import { BsHeartFill,BsHeart } from "react-icons/bs"
 import { NavLink } from 'react-router-dom';
+import { EditModal } from './EditModal';
 
-export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,accidents,max_speed,meilage,org_paint,prev_byer,price,rgst_place,handleDelete}) => {
+export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,accidents,max_speed,meilage,org_paint,prev_byer,price,rgst_place,handleDelete,getData}) => {
     const [liked,setLiked] = useState(false)
     const deleteItem = ()=>{
         handleDelete(_id)
@@ -50,7 +51,6 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                             {company}
                         </Box>
                         <Tooltip
-                            label="Whishlist"
                             bg="white"
                             placement={'top'}
                             color={'gray.800'}
@@ -95,8 +95,15 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                     </Flex>
                     <HStack mt={"3vh"}>
                         <Button 
+                        ml={"1vw"}
                             onClick={deleteItem}
                         >Delete</Button>
+                        <Button ml={"2vw"}>
+                            <EditModal 
+                                id={_id}
+                                getData = {getData}
+                            />
+                        </Button>
                     </HStack>
                 </Box>
             </Box>

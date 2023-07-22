@@ -33,6 +33,7 @@ import {
     AccordionIcon,
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import { EditModal } from './EditModal';
 
 export const DealSinglePage = () => {
     const toast = useToast()
@@ -218,6 +219,22 @@ export const DealSinglePage = () => {
                             </AccordionPanel>
                         </AccordionItem>
                     </Accordion>
+                    {/* <Button
+                        rounded={'5px'}
+                        w={'full'}
+                        size={'lg'}
+                        py={'7'}
+                        color={'white'}
+                        bg={'#00bac6'}
+                        _hover={{
+                            transform: 'translateY(2px)',
+                            boxShadow: 'lg',
+                        }}>
+                            <EditModal 
+                                data = {data}
+                                getData={getData}
+                            />
+                    </Button> */}
                     <Button
                         rounded={'5px'}
                         w={'full'}

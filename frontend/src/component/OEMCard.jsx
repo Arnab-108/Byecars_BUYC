@@ -49,7 +49,6 @@ function OEMCard({ _id, company, model,price, color, image }) {
                             {company}
                         </Box>
                         <Tooltip
-                            label="Whishlist"
                             bg="white"
                             placement={'top'}
                             color={'gray.800'}

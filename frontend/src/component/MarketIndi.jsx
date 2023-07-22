@@ -45,7 +45,6 @@ export const MarketIndi = ({_id,company,car,image,color,kms_ran,major_scratches,
                                 {company}
                             </Box>
                             <Tooltip
-                                label="Whishlist"
                                 bg="white"
                                 placement={'top'}
                                 color={'gray.800'}

@@ -28,7 +28,7 @@ export const Deals = () => {
         axios.get(`https://puce-light-anemone.cyclic.app/deal`,{
             params:obj.params,
             headers:{
-                Authorization:`Brerer ${token}`
+                Authorization:`Bearer ${token}`
             }
         })
             .then((res) => {
@@ -78,6 +78,7 @@ export const Deals = () => {
                                     key={el._id}
                                     {...el}
                                     handleDelete={handleDelete}
+                                    getData={getData}
                                 />
                             </GridItem>
                         ))
