@@ -96,9 +96,16 @@ export const DealIndi = ({_id,company,car,image,color,kms_ran,major_scratches,ac
                     <HStack mt={"3vh"}>
                         <Button 
                         ml={"1vw"}
+                        _hover={{
+                            bg:"red.400"
+                        }}
                             onClick={deleteItem}
                         >Delete</Button>
-                        <Button ml={"2vw"}>
+                        <Button ml={"2vw"}
+                            _hover={{
+                                bg:"green.500"
+                            }}
+                        >
                             <EditModal 
                                 id={_id}
                                 getData = {getData}
