@@ -14,6 +14,7 @@ export const OEM = () => {
     }, [])
 
     const getData = () => {
+        setLoader(true)
         axios.get("https://puce-light-anemone.cyclic.app/oem")
             .then((res) => {
                 console.log(res)
@@ -53,7 +54,7 @@ export const OEM = () => {
                         thickness='4px'
                         speed='0.65s'
                         emptyColor='gray.200'
-                        color='blue.500'
+                        color='red.500'
                         size='xl'
                     /> :
                         <Grid ml={"2vw"} mt={"5vh"} gap={5} gridTemplateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)", "repeat(3,1fr)", "repeat(3,1fr)"]}>
