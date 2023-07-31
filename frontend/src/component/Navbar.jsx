@@ -35,7 +35,7 @@ export const Navbar = () => {
     const navigate = useNavigate()
     //const toast = useToast()
     const showToastMessage = () => {
-        toast.success('Login Successfull !', {
+        toast.success('Logout Successfull !', {
             position: toast.POSITION.TOP_RIGHT
         });
     };

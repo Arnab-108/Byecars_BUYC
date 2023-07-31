@@ -99,7 +99,7 @@ export const Sidebar = () => {
                                             <Text fontSize={"sm"} color={"gray"}>Black</Text>
                                         </HStack>
                                         <HStack>
-                                            <input type="checkbox" value={"Brown"} checked={color.includes("Brown")} style={{width:"20px",height:"20px"}}  onChange={handleColor}  />
+                                            <input type="checkbox" value={"White"} checked={color.includes("White")} style={{width:"20px",height:"20px"}}  onChange={handleColor}  />
                                             <Text fontSize={"sm"} color={"gray"}>White</Text>
                                         </HStack>
                                         <HStack>
